@@ -1,0 +1,16 @@
+{{ if eq .Level 2 }}
+
+    <div class="alert alert-success">
+        <strong> {{ .Text | safeURL }} </strong>
+    </div>
+
+{{ end }}
+
+
+{{ if ge .Level 3 }}
+    <h1></h1>
+    <div class="alert alert-danger alert-sub">
+        <strong> {{ .Text | safeURL }} </strong>
+    </div>
+
+{{ end }}
