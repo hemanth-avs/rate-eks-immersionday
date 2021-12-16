@@ -650,3 +650,7 @@ div.cards.workshop div.content {
   width: 75% !important;
   height: auto !important;
 }
+
+.alert-sub {
+  padding: 1rem 0.5rem;
+}
