@@ -1,0 +1,25 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eksfargate
+  region: us-west-2
+  version: "1.20"
+
+availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
+
+fargateProfiles:
+  - name: fp-fargate
+    selectors:
+      - namespace: kube-system
+      - namespace: fargate
+
+managedNodeGroups:
+- name: nodegroup
+  desiredCapacity: 3
+
+# To enable all of the control plane logs, uncomment below:
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
