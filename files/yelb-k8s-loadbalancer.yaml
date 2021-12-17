@@ -1,0 +1,24 @@
+# This should work on Kubernetes deployments on AWS that have an ALB ingress controller deployed. 
+# This uses the IP mechanism and so it will work with both standard worker nodes as well as EKS/Fargate. 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yelb-ui
+  namespace: fargate
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  labels:
+    app: yelb-ui
+    tier: frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: yelb-ui
+    tier: frontend
