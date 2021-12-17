@@ -16,18 +16,22 @@ menu: main
 | 12:55 -  1:30 PM | Launching an Amazon EKS cluster using EKSCTL - Lab |
 |  1:30 -  1:45 PM | Deploy Examples Micro service to EKS Fargate       |
 |                  | Setting up AWS Load Balancer Controller            |
-|                  | - Expose application through INGRESS
-  * Expose Application to ELB
-* Patching / Upgrading your EKS Cluster
-  * The Upgrade Process
-  * Upgrade EKS Control Plane
-  * Upgrade EKS Core Add-ons
-  * Upgrade Managed Node Group
-* Autoscaling with HPA AND Cluster Autoscaler
-* Intro to RBAC
-  * IAM Grous to manage K8s access
-  * Iam Roles for Service Accounts
-* Open Policy Agent
+|                  | * Expose application through INGRESS               |
+|                  | * Expose Application to ELB                        |
+|                  | Patching / Upgrading your EKS Cluster              |
+|                  | * The Upgrade Process                              |
+|                  | * Upgrade EKS Control Plane                        |
+|                  | * Upgrade EKS Core Add-ons                         |
+|                  | * Upgrade Managed Node Group                       |
+|                  | Autoscaling                                        |
+|                  | * HPA                                              |
+|                  | * Cluster Autoscaler                               |
+|                  | Intro to RBAC                                      |
+|                  | * IAM Grous to manage K8s access                   |
+|                  | * Iam Roles for Service Accounts                   |
+|                  | Open Policy Agent                                  |
+
+### Topics for future sessions
 
 * Advanced VPC Networking with EKS
 * Monitoring using Amazon Managed Service for Prometheus / Grafana

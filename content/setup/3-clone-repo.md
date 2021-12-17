@@ -9,7 +9,8 @@ weight = 3
 In the bottom panel of your new Cloud9 IDE, you will see a terminal command line terminal open and ready to use. Run the following git command in the terminal to clone the necessary code to complete this tutorial:
 
 ```bash
-git clone https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop.git
+cd ~
+git clone https://github.com/hemanth-avs/rate-eks-immersionday.git
 ```
 
 After cloning the repository, you’ll see that your project explorer now includes the files cloned.
@@ -17,7 +18,7 @@ After cloning the repository, you’ll see that your project explorer now includ
 In the terminal, change directory to the subdirectory for this workshop in the repo:
 
 ```bash
-cd amazon-ecs-mythicalmysfits-workshop/workshop-1
+cd rate-eks-immersionday
 ```
 
 ### 2. Setup
