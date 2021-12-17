@@ -18,7 +18,7 @@ After cloning the repository, you’ll see that your project explorer now includ
 In the terminal, change directory to the subdirectory for this workshop in the repo:
 
 ```bash
-cd rate-eks-immersionday
+cd rate-eks-immersionday/files/
 ```
 
 ### 2. Setup
