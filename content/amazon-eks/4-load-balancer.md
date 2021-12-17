@@ -24,7 +24,7 @@ Learn more about [IAM Roles for Service Accounts](https://docs.aws.amazon.com/ek
 ```bash
 eksctl utils associate-iam-oidc-provider \
     --region ${AWS_REGION} \
-    --cluster eksfargate \
+    --cluster eksworkshop-eksctl \
     --approve
 ```
 
@@ -50,7 +50,7 @@ Next, create a Kubernetes Service Account by executing the following command
 
 ```
 eksctl create iamserviceaccount \
-  --cluster eksfargate \
+  --cluster eksworkshop-eksctl \
   --namespace kube-system \
   --name aws-load-balancer-controller \
   --attach-policy-arn arn:aws:iam::${ACCOUNT_ID}:policy/AWSLoadBalancerControllerIAMPolicy \
@@ -100,14 +100,14 @@ kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller/
 helm repo add eks https://aws.github.io/eks-charts
 
 export VPC_ID=$(aws eks describe-cluster \
-                --name eksfargate \
+                --name eksworkshop-eksctl \
                 --query "cluster.resourcesVpcConfig.vpcId" \
                 --output text)
 
 helm upgrade -i aws-load-balancer-controller \
     eks/aws-load-balancer-controller \
     -n kube-system \
-    --set clusterName=eksfargate \
+    --set clusterName=eksworkshop-eksctl \
     --set serviceAccount.create=false \
     --set serviceAccount.name=aws-load-balancer-controller \
     --set image.tag="v2.3.0" \

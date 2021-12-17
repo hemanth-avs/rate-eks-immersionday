@@ -3,7 +3,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: eksfargate
+  name: eksworkshop-eksctl
   region: us-west-2
   version: "1.20"
 
@@ -13,11 +13,17 @@ fargateProfiles:
   - name: fp-fargate
     selectors:
       - namespace: kube-system
+      - namespace: default
       - namespace: fargate
+      - namespace: storage
+      - namespace: rbac-test
+      - namespace: development
+      - namespace: integration
+      - namespace: gatekeeper-system
 
-managedNodeGroups:
-- name: nodegroup
-  desiredCapacity: 3
+#managedNodeGroups:
+#- name: nodegroup
+#  desiredCapacity: 3
 
 # To enable all of the control plane logs, uncomment below:
 cloudWatch:

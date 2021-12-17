@@ -14,7 +14,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: eksfargate
+  name: eksworkshop-eksctl
   region: us-west-2
   version: "1.20"
 

@@ -1,7 +1,7 @@
 +++
 title = "Clone Repo"
 date = 2019-10-28T11:40:22+11:00
-weight = 3
+weight = 5
 +++
 
 ### 1. Clone the Immersion day Workshop Repository
@@ -38,18 +38,7 @@ Make sure you see the “Success!” message when the script completes.
 
 [//]: # (populate a DynamoDB table with some seed data, upload site assets to S3, and)
 
-### 3. Update IAM Settings for Cloud9 Workspace
-
-{{% notice info %}}
-Cloud9 normally manages IAM credentials dynamically. This isn't currently compatible with the EKS IAM authentication, so we will disable it and rely on the IAM role instead.
-{{% /notice %}}
-
-```bash
-aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
-rm -vf ${HOME}/.aws/credentials
-```
-
-### 4. Finally, we should configure our aws cli with our current region as default
+### 3. Finally, we should configure our aws cli with our current region as default
 
 ```bash
 export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
