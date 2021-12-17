@@ -10,17 +10,18 @@ metadata:
 availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
 
 fargateProfiles:
-  - name: fp-fargate
+  - name: fp-fargate1
     selectors:
       - namespace: kube-system
       - namespace: default
       - namespace: fargate
       - namespace: storage
       - namespace: rbac-test
+  - name: fp-fargate2
+    selectors:
       - namespace: development
       - namespace: integration
       - namespace: gatekeeper-system
-
 #managedNodeGroups:
 #- name: nodegroup
 #  desiredCapacity: 3
