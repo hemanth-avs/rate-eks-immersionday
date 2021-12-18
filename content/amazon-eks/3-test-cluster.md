@@ -11,14 +11,19 @@ Confirm your nodes:
 kubectl get nodes # if we see response, we know we have authenticated correctly
 ```
 
-#### Export the Worker Role Name for use throughout the workshop:
+#### Export the Stackname / Worker Role Name for use throughout the workshop
 
 ```bash
-STACK_NAME=$(eksctl get nodegroup --cluster eksworkshop-eksctl -o json | jq -r '.[].StackName')
-ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
-echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
+STACK_NAME=$(eksctl get cluster eksworkshop-eksctl -o json | jq '.[].Tags."aws:cloudformation:stack-name"')
+
+echo "export STACK_NAME=${STACK_NAME}" | tee -a ~/.bash_profile
+
+# ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
+
+# echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
 ```
 
 #### Congratulations!
 
-You now have a fully working Amazon EKS Cluster that is ready to use! Before you move on to any other labs, make sure to complete the steps on the next page to update the EKS Console Credentials.
+You now have a fully working Amazon EKS Cluster that is ready to use!
+

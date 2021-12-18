@@ -81,10 +81,3 @@ for command in aws kubectl helm eksctl jq envsubst
     which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
   done
 ```
-
-### set the AWS Load Balancer Controller version
-
-```bash
-echo 'export LBC_VERSION="v2.3.0"' >>  ~/.bash_profile
-.  ~/.bash_profile
-```

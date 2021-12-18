@@ -6,7 +6,7 @@ draft: false
 
 Before we bring up the frontend service, let's take a look at the service types
 we are using:
-This is `files/yelb-k8s-loadbalancer.yaml` for our frontend service:
+This is `files/yelb/yelb-k8s-loadbalancer.yaml` for our frontend service:
 
 ```yaml
 apiVersion: v1
@@ -34,7 +34,7 @@ spec:
 
 Notice `type: LoadBalancer`: This will provision and configure a Network Load Balancers to handle incoming traffic to this service.
 
-Compare this to `files/yelb-k8s-manifest.yaml` for one of our backend services:
+Compare this to `files/yelb/yelb-k8s-manifest.yaml` for one of our backend services:
 
 ```yaml
 apiVersion: v1
@@ -61,7 +61,7 @@ Choosing this value makes the service only reachable from within the cluster.
 ### Deploy LB Service
 
 ```properties
-kubectl apply -f ./files/yelb-k8s-loadbalancer.yaml
+kubectl apply -f ./files/yelb/yelb-k8s-loadbalancer.yaml
 ```
 
 Now that we have a running service that is `type: LoadBalancer` we need to find

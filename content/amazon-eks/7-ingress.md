@@ -30,7 +30,7 @@ spec:
 Expose Yelb application through Ingress
 
 ```properties
-kubectl apply -f ./files/yelb-k8s-ingress-alb-ip.yaml -n fargate
+kubectl apply -f ./files/yelb/yelb-k8s-ingress-alb-ip.yaml -n fargate
 ```
 
 ```properties

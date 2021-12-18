@@ -11,6 +11,13 @@ draft: false
 * It satisfies Kubernetes `Ingress` resources by provisioning Application Load Balancers.
 * It satisfies Kubernetes `Service` resources by provisioning Network Load Balancers.
 
+### set the AWS Load Balancer Controller version
+
+```bash
+echo 'export LBC_VERSION="v2.3.0"' >>  ~/.bash_profile
+.  ~/.bash_profile
+```
+
 ### Create IAM OIDC provider
 
 First, we will have to set up an OIDC provider with the cluster.
@@ -34,8 +41,8 @@ The next step is to create the IAM policy that will be used by the AWS Load Bala
 
 This policy will be later associated to the Kubernetes Service Account and will allow the controller pods to create and manage the ELB’s resources in your AWS account for you.
 
-```
-curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.2.0/docs/install/iam_policy.json
+```bash
+curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/${LBC_VERSION}/docs/install/iam_policy.json
 
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
@@ -73,15 +80,11 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<AWS_ACCOUNT_ID>:role/eksctl-eksfargate-addon-iamserviceaccount-ku-Role1-KJWJZSPQAHZS
-  creationTimestamp: "2020-12-04T19:31:57Z"
+    eks.amazonaws.com/role-arn: arn:aws:iam::<AWS_ACCOUNT_ID>:role/eksctl-eksworkshop-eksctl-addon-iamserviceac-Role1-1DY83DJKXY0FT
   name: aws-load-balancer-controller
   namespace: kube-system
-  resourceVersion: "3094"
-  selfLink: /api/v1/namespaces/kube-system/serviceaccounts/aws-load-balancer-controller
-  uid: aa940b27-796e-4cda-bbba-fe6ca8207c00
 secrets:
-- name: aws-load-balancer-controller-token-8pnww
+- name: aws-load-balancer-controller-token-69q6s
 ```
 
 {{% notice info %}}
@@ -92,6 +95,11 @@ For more information on IAM Roles for Service Accounts [follow this link](/begin
 
 ```bash
 kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller/crds?ref=master"
+```
+
+```properties
+customresourcedefinition.apiextensions.k8s.io/ingressclassparams.elbv2.k8s.aws created
+customresourcedefinition.apiextensions.k8s.io/targetgroupbindings.elbv2.k8s.aws created
 ```
 
 ### Deploy the Helm chart from the Amazon EKS charts repo
@@ -110,7 +118,7 @@ helm upgrade -i aws-load-balancer-controller \
     --set clusterName=eksworkshop-eksctl \
     --set serviceAccount.create=false \
     --set serviceAccount.name=aws-load-balancer-controller \
-    --set image.tag="v2.3.0" \
+    --set image.tag=${LBC_VERSION} \
     --set region=${AWS_REGION} \
     --set vpcId=${VPC_ID}
 ```
