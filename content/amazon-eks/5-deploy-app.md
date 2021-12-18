@@ -14,7 +14,7 @@ Copy/Paste the following commands into your Cloud9 workspace:
 
 ```properties
 cd ~/rate-eks-immersionday
-kubectl apply -f ./yelb/files/yelb-k8s-manifest.yaml
+kubectl apply -f ./files/yelb/yelb-k8s-manifest.yaml
 ```
 
 ```properties
