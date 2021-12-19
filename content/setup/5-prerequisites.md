@@ -41,6 +41,14 @@ kubectl completion bash >>  ~/.bash_completion
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
+Let’s configure our first Chart repository. Chart repositories are similar to APT or yum repositories that you might be familiar with on Linux, or Taps for Homebrew on macOS.
+
+Download the stable repository so we have something to start with:
+
+```properties
+helm repo add stable https://charts.helm.sh/stable
+```
+
 ### Instal EKSCTL
 
 For this module, we need to download the [eksctl](https://eksctl.io/) binary:

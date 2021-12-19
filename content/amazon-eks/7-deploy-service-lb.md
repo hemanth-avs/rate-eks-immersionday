@@ -1,6 +1,6 @@
 ---
 title: "Expose Application through LB"
-weight: 6
+weight: 7
 draft: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Deploy Yelb Application"
-weight: 5
+weight: 6
 draft: false
 ---
 
