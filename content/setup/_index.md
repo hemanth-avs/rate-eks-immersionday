@@ -13,12 +13,12 @@ Connect to the AWS Event Engine by browsing to https://dashboard.eventengine.run
 
 Enter your unique hash and the click on **proceeed**.
 
-![hash-enter](https://containers-immersionday.workshop.aws/images/ee-hash-enter.png)
+![hash-enter](/images/cloud9/cloud9-ee-hash-enter.png)
 
 #### Click on the **AWS Console** button.
 
-![launch-console](https://containers-immersionday.workshop.aws/images/ee-dashboard.png)
+![launch-console](/images/cloud9/cloud9-ee-dashboard.png)
 
 #### Click on the **Open AWS Console** button to launch the AWS Management Console.
 
-![launch-console](https://containers-immersionday.workshop.aws/images/ee-console-login.png)
+![launch-console](/images/cloud9/cloud9-ee-console-login.png)
