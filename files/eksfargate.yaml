@@ -22,6 +22,7 @@ fargateProfiles:
       - namespace: development
       - namespace: integration
       - namespace: gatekeeper-system
+
 #managedNodeGroups:
 #- name: nodegroup
 #  desiredCapacity: 3
@@ -30,3 +31,16 @@ fargateProfiles:
 cloudWatch:
   clusterLogging:
     enableTypes: ["*"]
+
+iam:
+  withOIDC: true
+
+addons:
+- name: vpc-cni
+  version: latest
+  attachPolicyARNs:
+  - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+- name: kube-proxy
+  version: latest
+- name: coredns
+  version: latest

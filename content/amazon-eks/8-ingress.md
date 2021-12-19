@@ -85,3 +85,12 @@ Output should look like this
 ```properties
 http://k8s-fargate-yelbui-027f8166b6-1241061016.us-west-2.elb.amazonaws.com
 ```
+
+### Cleanup
+
+```bash
+cd ~/rate-eks-immersionday
+kubectl delete -f ./files/yelb/yelb-k8s-manifest.yaml
+kubectl delete -f ./files/yelb/yelb-k8s-loadbalancer.yaml
+kubectl delete -f ./files/yelb/yelb-k8s-ingress-alb-ip.yaml
+```
