@@ -19,3 +19,33 @@ eksctl create iamidentitymapping --cluster eksworkshop-eksctl --arn arn:aws:iam:
   * [Kube Proxy](https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html)
   * [VPC CNI - aws-node](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html)
   * [Core DNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html)
+
+### Listing enabled addons
+
+```bash
+eksctl get addons --cluster eksworkshop-eksctl
+```
+
+### Discovering addons
+
+* You can discover what addons are available to install on your cluster by running:
+
+```bash
+eksctl utils describe-addon-versions --cluster eksworkshop-eksctl
+```
+
+* This will discover your cluster's kubernetes version and filter on that. Alternatively if you want to see what addons are available for a particular kubernetes version you can run:
+
+```bash
+eksctl utils describe-addon-versions --kubernetes-version 1.21
+```
+
+### Addon Update
+
+```bash
+eksctl utils update-kube-proxy --cluster=eksworkshop-eksctl --approve
+
+eksctl utils update-coredns --cluster=eksworkshop-eksctl --approve
+
+eksctl utils update-aws-node --cluster=eksworkshop-eksctl --approve
+```

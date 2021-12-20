@@ -49,11 +49,3 @@ echo "export AWS_REGION=${AWS_REGION}" >> ~/.bash_profile
 aws configure set default.region ${AWS_REGION}
 aws configure get default.region
 ```
-
-### 5. Clone files Repository
-
-```bash
-cd ~
-git clone https://github.com/hemanth-avs/rate-eks-immersionday.git
-cd rate-eks-immersionday
-```

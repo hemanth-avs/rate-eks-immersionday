@@ -42,6 +42,19 @@ fargateProfiles:
 cloudWatch:
   clusterLogging:
     enableTypes: ["*"]
+
+iam:
+  withOIDC: true
+
+addons:
+- name: vpc-cni
+  version: latest
+  attachPolicyARNs:
+  - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+- name: kube-proxy
+  version: latest
+- name: coredns
+  version: latest
 ```
 
 ### Create EKS Cluster
