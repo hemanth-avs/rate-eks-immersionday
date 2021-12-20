@@ -28,18 +28,19 @@ deployment.apps/yelb-db created
 deployment.apps/yelb-appserver created
 ```
 
-We can watch the progress by looking at the deployment status:
+You can check if the `deployment` has completed
 
 ```properties
-kubectl get deployment -n fargate
+kubectl -n fargate rollout status deployment yelb-ui
+kubectl -n fargate rollout status deployment yelb-appserver
+kubectl -n fargate rollout status deployment yelb-db
+kubectl -n fargate rollout status deployment redis-server
 ```
 
 ```properties
-NAME             READY   UP-TO-DATE   AVAILABLE   AGE
-redis-server     1/1     1            1           1m15s
-yelb-appserver   1/1     1            1           1m15s
-yelb-db          1/1     1            1           1m15s
-yelb-ui          3/3     3            3           1m15s
+Waiting for deployment "yelb-ui" rollout to finish: 0 of 3 updated replicas are available...
+Waiting for deployment "yelb-ui" rollout to finish: 1 of 3 updated replicas are available...
+Waiting for deployment "yelb-ui" rollout to finish: 2 of 3 updated replicas are available...
 ```
 
 ### Fargate Nodes

@@ -58,6 +58,8 @@ kubectl set resources deploy php-apache --requests=cpu=250m
 kubectl expose deploy php-apache --port 80
 
 kubectl get pod -l app=php-apache
+
+kubectl -n default rollout status deployment php-apache
 ```
 
 ### Create an HPA resource
