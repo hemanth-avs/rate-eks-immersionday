@@ -58,6 +58,12 @@ addons:
   version: latest
 ```
 
+### VPC CNI
+
+* EKS supports native VPC networking via the VPC CNI plugin for Kubernetes
+* Pod is a 1st class citizen in the VPC and gets an IP address picked from the VPC CIDR block
+* Pod’s IP address is routable from anywhere within the VPC
+
 ### Create EKS Cluster
 
 {{% notice info %}}
@@ -72,3 +78,24 @@ eksctl create cluster \
 {{% notice info %}}
 Launching EKS and all the dependencies will take approximately 15 minutes
 {{% /notice %}}
+
+### Fargate Profile
+
+```bash
+eksctl get fargateprofile --cluster eksworkshop-eksctl --name fp-fargate2 -o yaml
+```
+
+```yaml
+- name: fp-fargate2
+  podExecutionRoleARN: arn:aws:iam::account-id:role/eksctl-eksworkshop-eksctl-FargatePodExecutionRole-UAVYAQ9MBU54
+  selectors:
+  - namespace: development
+  - namespace: integration
+  - namespace: gatekeeper-system
+  - namespace: amazon-cloudwatch
+  status: ACTIVE
+  subnets:
+  - subnet-0d2dd9aa4bf87af50
+  - subnet-051fe05f945d42dc0
+  - subnet-0313b312b38ba641c
+```
