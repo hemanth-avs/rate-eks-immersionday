@@ -83,3 +83,12 @@ fargate-ip-192-168-188-73.us-west-2.compute.internal    Ready    <none>   54m   
 If your cluster has any worker nodes, they will be listed with a name starting wit the **ip-** prefix.
 
 In addition to the worker nodes, if any, there will now be five additional **fargate-** nodes listed. These are merely kubelets from the microVMs in which your sample app pods are running under Fargate, posing as nodes to the EKS Control Plane. This is how the EKS Control Plane stays aware of the Fargate infrastructure under which the pods it orchestrates are running. There will be a “fargate” node added to the cluster for each pod deployed on Fargate.
+
+### View Logs
+
+* [Cloudwatch](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#logsV2:log-groups)
+* Log Group
+  * Control Plane logs
+    * /aws/eks/eksworkshop-eksctl/cluster
+  * Application Logs
+    * fluent-bit-cloudwatch

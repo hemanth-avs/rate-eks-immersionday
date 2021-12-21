@@ -31,11 +31,11 @@ You now have a fully working Amazon EKS Cluster that is ready to use!
 ### Create a kubeconfig for Amazon EKS
 
 ```bash
-aws eks update-kubeconfig --region region-code --name cluster-name
+# aws eks update-kubeconfig --region region-code --name cluster-name
 ```
 
 ```bash
-eksctl utils write-kubeconfig cluster-name
+# eksctl utils write-kubeconfig cluster-name
 ```
 
 * User Permssion required
