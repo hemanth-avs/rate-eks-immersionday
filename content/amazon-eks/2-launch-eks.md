@@ -33,6 +33,7 @@ fargateProfiles:
       - namespace: development
       - namespace: integration
       - namespace: gatekeeper-system
+      - namespace: amazon-cloudwatch
 
 #managedNodeGroups:
 #- name: nodegroup

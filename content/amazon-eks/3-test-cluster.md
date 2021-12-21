@@ -17,13 +17,13 @@ kubectl get nodes # if we see response, we know we have authenticated correctly
 STACK_NAME=$(eksctl get cluster eksworkshop-eksctl -o json | jq '.[].Tags."aws:cloudformation:stack-name"')
 
 echo "export STACK_NAME=${STACK_NAME}" | tee -a ~/.bash_profile
+source ~/.bash_profile
 
-# ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
+FrgtPodExecRole=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId' | grep -i Fargate )
 
-# echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
+echo "export FrgtPodExecRole=${FrgtPodExecRole}" | tee -a ~/.bash_profile
 ```
 
-#### Congratulations!
+#### Congratulations
 
 You now have a fully working Amazon EKS Cluster that is ready to use!
-

@@ -134,7 +134,7 @@ managedNodeGroups:
 #### CloudWatch cluster logging enable
 
 ```yaml
-loudWatch:
+cloudWatch:
   clusterLogging:
     enableTypes: ["audit", "authenticator", "controllerManager"]
     # all supported types: "api", "audit", "authenticator", "controllerManager", "scheduler"

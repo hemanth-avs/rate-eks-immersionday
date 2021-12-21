@@ -22,16 +22,6 @@ kubectl apply -f ~/rate-eks-immersionday/files/fargate-logging/aws-observability
 
 ### Provide Cloudwatch Logs permission to FargatePodExecutionRole
 
-* Fetch the FargatePodExecution
-
-```bash
-aws cloudformation describe-stacks --stack-name "$STACK_NAME" | jq -r '[.Stacks[0].Outputs[] | {key: .OutputKey, value: .OutputValue}] | from_entries' > /tmp/cfn-output.json
-
-export FrgtPodExecRoleARN=`cat /tmp/cfn-output.json | yq eval .FargatePodExecutionRoleARN -`
-
-export FrgtPodExecRole=$(echo "$FrgtPodExecRoleARN" | sed "s/arn:aws:iam::641223728001:role\///" )
-```
-
 * Create CloudWatch IAM policy
 
 ```bash
@@ -40,10 +30,32 @@ curl -o permissions.json https://raw.githubusercontent.com/aws-samples/amazon-ek
 aws iam create-policy --policy-name eks-fargate-logging-policy --policy-document file://permissions.json
 ```
 
-* Attach the Policy to Fargate Role
+* Attach the Cloudwatch Logs Policy to Fargate Role
 
 ```bash
+echo $FrgtPodExecRole
+
 aws iam attach-role-policy \
   --policy-arn arn:aws:iam::${ACCOUNT_ID}:policy/eks-fargate-logging-policy \
   --role-name $FrgtPodExecRole
+```
+
+* Attach the Cloudwatch Agent Policy to Fargate Role
+
+```bash
+eksctl create iamserviceaccount \
+ --name cwagent-prometheus \
+ --namespace amazon-cloudwatch \
+ --cluster eksworkshop-eksctl \
+ --attach-policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy \
+ --approve \
+ --override-existing-serviceaccounts
+```
+
+* Deploy Cloudwatch Agent
+
+```bash
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/service/cwagent-prometheus/prometheus-eks-fargate.yaml | 
+sed "s/{{cluster_name}}/eksworkshop-eksctl/;s/{{region_name}}/$AWS_REGION/" | 
+kubectl apply -f -
 ```

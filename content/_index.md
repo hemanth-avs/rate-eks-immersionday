@@ -11,11 +11,11 @@ menu: main
 | ---              | ---                                                |
 | 12:00 -  1:00 PM | Welcome & Introductions                            |
 |                  | Containers Immersion Day Introduction              |
-|                  | Introduction to Amazon EKS - Presentation          |
-| Labs             | Containers Immersion Day Workshop Setup            |
-|                  | Launching an Amazon EKS cluster using EKSCTL - Lab |
-|  1:30 -  1:45 PM | Break                                              |
-|                  | Deploy AWS Load Balancer Controller                |
+| Presentation     | Introduction to Amazon EKS                         |
+| Labs             | Cloud9 Workshop Setup                              |
+|                  | Launching an Amazon EKS cluster using EKSCTL       |
+| 1:30 -  1:45 PM  | Break                                              |
+| Labs             | Deploy AWS Load Balancer Controller                |
 |                  | Deploy Examples Micro service to EKS Fargate       |
 |                  | Setting up AWS Load Balancer Controller            |
 |                  | * Expose application through INGRESS               |
