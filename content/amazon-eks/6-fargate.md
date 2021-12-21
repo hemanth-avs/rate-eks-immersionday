@@ -1,10 +1,9 @@
 ---
-title: "Fargate"
+title: "Fargate pod configuration"
 weight: 6
 draft: false
 ---
 
-### Fargate pod configuration
 
 |   vCPU value      |   Memory value                                |
 |   ---             |   ---                                         |
@@ -18,6 +17,13 @@ draft: false
 * Fargate adds 256 MB to each pod's memory reservation for the required Kubernetes components (kubelet, kube-proxy, and containerd).
 * The CapacityProvisioned annotation represents the enforced pod capacity and it determines the cost of your pod running on Fargat
 * [Doc - Fargate pod configuration](https://docs.aws.amazon.com/eks/latest/userguide/fargate-pod-configuration.html)
+* When provisioned, each pod running on Fargate receives 20 GB of container image layer storage. Pod storage is ephemeral.
+  * encryption of the ephemeral storage volume enabled by default.
+
+```bash
+annotations:
+    CapacityProvisioned: 0.25vCPU 0.5GB
+```
 
 | Requested         | Provisioned                                   |
 | ---               | ---                                           |
@@ -28,3 +34,4 @@ draft: false
 | 255m cpu, 10Gi    |  2.00 vCPU 11GB                               |
 |    9 cpu, 10Gi    |  Your pod's cpu/memory requirements exceed the max Fargate configuration|
 | 255m cpu, 31Gi    |  Your pod's cpu/memory requirements exceed the max Fargate configuration|
+
