@@ -1,6 +1,6 @@
 ---
 title: "Autoscaling with HPA"
-weight: 11
+weight: 12
 ---
 
 [Autoscaling with HPA and CA](https://www.eksworkshop.com/beginner/080_scaling/)

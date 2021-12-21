@@ -1,6 +1,6 @@
 ---
 title: "EFS"
-weight: 10
+weight: 11
 ---
 
 [EFS Lab](https://www.eksworkshop.com/beginner/190_efs/)

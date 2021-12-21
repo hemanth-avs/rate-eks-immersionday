@@ -1,6 +1,6 @@
 ---
 title: "Ingress"
-weight: 8
+weight: 9
 ---
 
 AWS Load Balancer Controller create Application Load Balancer (ALB) when you create a Kubernetes Ingress Object

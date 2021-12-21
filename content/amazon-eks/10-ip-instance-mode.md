@@ -1,6 +1,6 @@
 ---
 title: "LB IP & Instance Mode"
-weight: 9
+weight: 10
 ---
 
 ### IP Mode

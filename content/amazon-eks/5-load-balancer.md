@@ -1,6 +1,6 @@
 ---
 title: "Setting up the LB controller"
-weight: 4
+weight: 5
 draft: false
 ---
 

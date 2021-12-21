@@ -1,6 +1,6 @@
 ---
 title: "Fargate logging"
-weight: 13
+weight: 4
 ---
 
 * Amazon EKS on Fargate offers a built-in log router based on Fluent Bit
@@ -18,6 +18,40 @@ weight: 13
 
 ```bash
 kubectl apply -f ~/rate-eks-immersionday/files/fargate-logging/aws-observability.yaml
+```
+
+```yaml
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: aws-logging
+  namespace: aws-observability
+data:
+  output.conf: |
+    [OUTPUT]
+        Name cloudwatch_logs
+        Match   *
+        region us-west-2
+        log_group_name fluent-bit-cloudwatch
+        log_stream_prefix from-fluent-bit-
+        auto_create_group true
+        log_key log
+
+  parsers.conf: |
+    [PARSER]
+        Name crio
+        Format Regex
+        Regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>P|F) (?<log>.*)$
+        Time_Key    time
+        Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+  
+  filters.conf: |
+     [FILTER]
+        Name parser
+        Match *
+        Key_name log
+        Parser crio
 ```
 
 ### Provide Cloudwatch Logs permission to FargatePodExecutionRole
@@ -38,24 +72,4 @@ echo $FrgtPodExecRole
 aws iam attach-role-policy \
   --policy-arn arn:aws:iam::${ACCOUNT_ID}:policy/eks-fargate-logging-policy \
   --role-name $FrgtPodExecRole
-```
-
-* Attach the Cloudwatch Agent Policy to Fargate Role
-
-```bash
-eksctl create iamserviceaccount \
- --name cwagent-prometheus \
- --namespace amazon-cloudwatch \
- --cluster eksworkshop-eksctl \
- --attach-policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy \
- --approve \
- --override-existing-serviceaccounts
-```
-
-* Deploy Cloudwatch Agent
-
-```bash
-curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/service/cwagent-prometheus/prometheus-eks-fargate.yaml | 
-sed "s/{{cluster_name}}/eksworkshop-eksctl/;s/{{region_name}}/$AWS_REGION/" | 
-kubectl apply -f -
 ```
