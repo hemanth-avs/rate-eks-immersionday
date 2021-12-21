@@ -15,12 +15,14 @@ menu: main
 | Labs             | Cloud9 Workshop Setup                              |
 |                  | Launching an Amazon EKS cluster using EKSCTL       |
 | 1:30 -  1:45 PM  | Break                                              |
-| Labs             | Deploy AWS Load Balancer Controller                |
+| Labs             | Fargate Logging                                    |
+|                  | Fargate pod configuration                          |
+|                  | Deploy AWS Load Balancer Controller                |
 |                  | Deploy Examples Micro service to EKS Fargate       |
 |                  | Setting up AWS Load Balancer Controller            |
 |                  | * Expose application through INGRESS               |
 |                  | * Expose Application to ELB                        |
-|                  | * Persistance with EFS                             |
+|                  | Persistance with EFS                               |
 |                  | Autoscaling                                        |
 |                  | * HPA                                              |
 |                  | ** Cluster Autoscaler                              |
@@ -32,7 +34,6 @@ menu: main
 |                  | * Upgrade EKS Core Add-ons                         |
 |                  | * Upgrade Managed Node Group                       |
 |                  | Open Policy Agent                                  |
-|                  | Logging with Fargate                               |
 
 ### Topics for future sessions
 
