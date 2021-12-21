@@ -9,13 +9,14 @@ menu: main
 
 |  Time            | Topic                                              |
 | ---              | ---                                                |
-| 12:00 -  1:00 PM | Welcome & Introductions                            |
+| 12:00 -  1:30 PM | Welcome & Introductions                            |
 |                  | Containers Immersion Day Introduction              |
-| Presentation     | Introduction to Amazon EKS                         |
-| Labs             | Cloud9 Workshop Setup                              |
+|                  | Presentation - Introduction to Amazon EKS          |
+|                  | Labs - Cloud9 Workshop Setup                       |
 |                  | Launching an Amazon EKS cluster using EKSCTL       |
 | 1:30 -  1:45 PM  | Break                                              |
-| Labs             | Fargate Logging                                    |
+| 1:45 - 4:00 PM   | Labs                                               |
+|                  | Fargate Logging                                    |
 |                  | Fargate pod configuration                          |
 |                  | Deploy AWS Load Balancer Controller                |
 |                  | Deploy Examples Micro service to EKS Fargate       |
