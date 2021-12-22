@@ -23,7 +23,7 @@ eksctl create iamidentitymapping --cluster eksworkshop-eksctl --arn arn:aws:iam:
   * Any new pods launched on Fargate will have a kubelet version that matches your cluster version. Existing Fargate pods aren't changed.
 
   ```properties
-    kubectl patch deployment yelb-ui -n fargate -p \ "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
+    kubectl rollout restart deployment yelb-ui -n fargate
   ```
 
   ```properties
