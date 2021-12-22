@@ -19,7 +19,27 @@
 
 {{ end }}
 
-{{ if ge .Level 4 }}
+{{ if eq .Level 4 }}
+
+    <h{{ .Level }} id="{{ .Anchor | safeURL }}"></h{{ .Level }}>
+
+    <div class="alert alert-success alert-sub">
+        <strong> {{ .Text | safeURL | safeHTML }} </strong>
+    </div>
+
+{{ end }}
+
+{{ if eq .Level 5 }}
+
+    <h{{ .Level }} id="{{ .Anchor | safeURL }}"></h{{ .Level }}>
+
+    <div class="alert alert-warning alert-sub">
+        <strong> {{ .Text | safeURL | safeHTML }} </strong>
+    </div>
+
+{{ end }}
+
+{{ if ge .Level 6 }}
 
     <h{{ .Level }} id="{{ .Anchor | safeURL }}"></h{{ .Level }}>
 

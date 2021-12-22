@@ -79,7 +79,7 @@ View the HPA using kubectl. You probably will see `<unknown>/30%` for 1-2 minute
 kubectl get hpa -w
 ```
 
-## Generate load to trigger scaling
+### Generate load to trigger scaling
 
 **Open a new terminal** in the Cloud9 Environment and run the following command to drop into a shell on a new container
 
@@ -124,13 +124,13 @@ php-apache   Deployment/php-apache   24%/30%   1         10        4          3m
 
 You can now stop (_Ctrl + C_) load test that was running in the other terminal. You will notice that HPA will slowly bring the replica count to min number based on its configuration. You should also get out of load testing application by pressing _Ctrl + D_.
 
-### scale-down behavior
+##### scale-down behavior
 
 ```bash
 kubectl describe hpa php-apache
 ```
 
-```
+```properties
 Name:                                                  php-apache
 Namespace:                                             default
 Labels:                                                <none>
