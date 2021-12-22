@@ -3,9 +3,6 @@ title: "Autoscaling with HPA"
 weight: 12
 ---
 
-[Autoscaling with HPA and CA](https://www.eksworkshop.com/beginner/080_scaling/)
-
-
 In this Chapter, we will show patterns for scaling your applications deployments automatically.
 
 Automatic scaling in K8s comes in two forms:
@@ -169,3 +166,7 @@ kubectl delete pod load-generator
 kubectl delete -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.4.1/components.yaml
 
 ```
+
+##### HPA / CA Lab with Nodegroups
+
+[Autoscaling with HPA and CA](https://www.eksworkshop.com/beginner/080_scaling/)
